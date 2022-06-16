@@ -40,21 +40,17 @@ export default {
 
   methods: {
     onClickLogin(event) {
-      this.$refs.model.validate((valid) => {
+      this.$refs.model.validate(async (valid) => {
         if (!valid) return false;
 
         this.logining = true;
 
-        this.$store
-          .dispatch("login", this.model)
-          .then(() => {
-            this.logining = false;
+        var res = await this.$store.dispatch("login", this.model);
+        this.logining = false;
 
-            this.$router.replace({ path: "/" }).catch((err) => {});
-          })
-          .catch((err) => {
-            this.logining = false;
-          });
+        if (res) {
+          this.$router.replace({ path: "/" }).catch((err) => {});
+        }
       });
     },
   },

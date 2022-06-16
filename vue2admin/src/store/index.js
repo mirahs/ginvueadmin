@@ -60,35 +60,21 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    login(context, data) {
-      return new Promise((resolve, reject) => {
-        auth_service.login(data).then((res) => {
-          if (0 == res.code) {
-            context.commit('login', [res.data.token, res.data.user])
-            resolve(res)
-          } else {
-            reject(res.msg)
-          }
-        }).catch((err) => {
-          reject(err)
-        })
-      })
+    async login(context, data) {
+      var res = await auth_service.login(data)
+      if (0 == res.code) {
+        context.commit('login', [res.data.token, res.data.user])
+        return true
+      }
+      return false
     },
-    info(context) {
-      return new Promise((resolve, reject) => {
-        admUserService.info().then((res) => {
-          if (0 == res.code) {
-            context.commit('setUserInfo', res.data)
-            resolve(res)
-          } else {
-            reject(res.msg)
-          }
-        }).catch((err) => {
-          reject(err)
-        })
-      })
+    async info(context) {
+      var res = await admUserService.info()
+      if (0 == res.code) {
+        context.commit('setUserInfo', res.data)
+      }
     },
-    logout(context) {
+    async logout(context) {
       localStorage.removeItem('token')
 
       auth_service.logout()

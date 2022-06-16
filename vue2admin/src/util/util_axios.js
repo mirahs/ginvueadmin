@@ -6,7 +6,7 @@ import store from '@/store'
 
 const request = axios.create({
     baseURL: process.env.VUE_APP_BASE_URL,
-    timeout: 1000 * 10, //七牛云上传文件比较耗时
+    timeout: 1000 * 5,
 })
 
 
