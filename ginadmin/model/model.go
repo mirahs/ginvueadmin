@@ -5,6 +5,7 @@ import (
 	"ginadmin/conf"
 	"ginadmin/constant"
 	"ginadmin/util"
+	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -92,6 +93,10 @@ func Init() {
 			Type:     constant.AdminUserTypeAdmin,
 			Remark:   conf.App.InitAccount,
 		})
+	}
+
+	if conf.App.GinMode == gin.DebugMode {
+		Db = Db.Debug()
 	}
 }
 

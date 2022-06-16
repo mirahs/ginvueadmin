@@ -8,6 +8,7 @@ import (
 	"ginadmin/util/page"
 	"github.com/gin-gonic/gin"
 	"github.com/unknwon/com"
+	"gorm.io/gorm"
 	"log"
 	"net/http"
 )
@@ -17,8 +18,13 @@ import (
 func LogAdmUserLoginGet(ctx *gin.Context) {
 	var logs []*model.LogAdmUserLogin
 
+	// AdmUser 数据软删除查询
+	preloadUnscoped := func(db *gorm.DB) *gorm.DB {
+		return db.Unscoped()
+	}
+
 	wheres := service.LogLoginAdmUserGetWhere(ctx)
-	preloads := [][]interface{}{{"AdmUser"}}
+	preloads := [][]interface{}{{"AdmUser", preloadUnscoped}}
 	orders := []string{"`id` DESC"}
 
 	count, err := page.Page(&page.Param{Ctx: ctx, Db: model.Db, Datas: &logs, Wheres: wheres, Preloads: preloads, Orders: orders})
