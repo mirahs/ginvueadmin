@@ -35,7 +35,7 @@
       :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="count">
     </el-pagination>
 
-    <el-dialog :title="model.id != null ? '管理员更新' : '管理员添加'" :visible.sync="editShow" center width="30%">
+    <el-dialog :title="model.id != null ? '管理员更新' : '管理员添加'" :visible.sync="editShow" center width="30%" :close-on-click-modal="false">
       <adm-user-edit :model="model" @submit="editSubmit" />
     </el-dialog>
   </div>
