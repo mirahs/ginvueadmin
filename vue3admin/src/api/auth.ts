@@ -2,23 +2,16 @@ import { request, IApiResponse } from "./base"
 
 
 // 登录
-const login = (data: any): Promise<IApiResponse> => {
+export const login = (data: any): Promise<IApiResponse> => {
     return request.post('auth/login', data)
 };
 
 // 登录(token)
-const loginToken = (): Promise<IApiResponse> => {
+export const loginToken = (): Promise<IApiResponse> => {
     return request.post('auth/login_token')
 };
 
 // 登出
-const logout = () => {
+export const logout = () => {
     return request.post('auth/logout')
-}
-
-
-export default {
-    login,
-    loginToken,
-    logout,
 }

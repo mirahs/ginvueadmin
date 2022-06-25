@@ -3,7 +3,7 @@ import { RouteRecordRaw, createWebHashHistory, createRouter, NavigationGuardNext
 import useAuthStore from '@/sotre/auth'
 import useMenuStore from '@/sotre/menu'
 
-import auth from "@/api/auth"
+import * as auth from "@/api/auth"
 
 
 const routes: RouteRecordRaw[] = [

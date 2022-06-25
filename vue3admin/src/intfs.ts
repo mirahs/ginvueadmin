@@ -9,3 +9,18 @@ export interface IUser {
 
     locked: boolean
 }
+
+export interface IUserLoginLog {
+    id: number
+    account: string
+    type: number
+    time: number
+    status: number
+    ip: string
+    address: string
+}
+
+
+export interface IUserSearch {
+    account: string
+}

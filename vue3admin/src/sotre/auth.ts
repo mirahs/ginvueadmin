@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 
-import auth from "@/api/auth"
+import * as auth from "@/api/auth"
 
 import { IUser } from '@/intfs'
 

@@ -29,9 +29,9 @@ export const lock = (id: number): Promise<IApiResponse> => {
 // 重置用户密码
 export const reset = (id: number): Promise<IApiResponse> => {
     return request.patch(`adm_users/${id}/reset`)
-  }
+}
 
 // 修改密码
 export const password = (data: any): Promise<IApiResponse> => {
     return request.patch('adm_users/password', data)
-};
+}
