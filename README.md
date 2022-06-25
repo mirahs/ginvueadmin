@@ -21,7 +21,7 @@ go build ginadmin
 
 ## vue2admin
 
-vue2 前端
+Vue2 + Element UI 实现的前端
 
 ### 安装依赖
 
@@ -33,4 +33,20 @@ npm install
 
 ```shell
 npm run serve
+```
+
+## vue3admin
+
+Vite2 + Vue3 + TypeScript + Pinia + Element Plus 实现的前端
+
+### 安装依赖
+
+```shell
+npm install
+```
+
+### 启动
+
+```shell
+npm run dev
 ```
