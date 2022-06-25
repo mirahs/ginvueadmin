@@ -95,14 +95,6 @@ export default {
       this.$message.success("日志删除成功");
     },
 
-    getDataById(id) {
-      for (let i = 0; i < this.datas.length; i++) {
-        if (this.datas[i].id == id) {
-          return this.datas[i];
-        }
-      }
-    },
-
     formatLoginType(row, column) {
       return row[column.property] == 1 ? "账号登录" : "token登录";
     },
