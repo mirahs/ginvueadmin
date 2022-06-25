@@ -1,6 +1,6 @@
 {
   "name": "vue2admin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode dev",
@@ -14,7 +14,6 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
-    "mavon-editor": "^2.10.4",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.3",
@@ -27,8 +26,6 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   }
 }
