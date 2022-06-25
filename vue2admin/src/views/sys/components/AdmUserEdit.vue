@@ -65,22 +65,11 @@ export default {
   methods: {
     onSubmit(formName) {
       this.$refs[formName].validate((valid) => {
-        if (!valid) return false;
+        if (!valid) return;
+
         this.$emit("submit", this.model);
       });
     },
   },
 };
 </script>
-
-
-<style scoped>
-.title-form-item {
-  margin: 0;
-  padding: 0;
-}
-
-.title {
-  font-size: 18px;
-}
-</style>

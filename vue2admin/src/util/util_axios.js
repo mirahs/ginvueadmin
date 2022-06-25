@@ -33,7 +33,7 @@ request.interceptors.response.use(response => {
     }
 
     Message.error('网络错误')
-    return undefined
+    return { code: -1 }
 })
 
 

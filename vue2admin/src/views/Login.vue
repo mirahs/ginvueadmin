@@ -41,7 +41,7 @@ export default {
   methods: {
     onClickLogin(event) {
       this.$refs.model.validate(async (valid) => {
-        if (!valid) return false;
+        if (!valid) return;
 
         this.logining = true;
 

@@ -107,7 +107,7 @@ export default {
 
       if (this.model.id == undefined) {
         const res = await user_service.add(model2);
-        if (!res || res.code != 0) return;
+        if (res.code != 0) return;
 
         this.editShow = false;
         this.loadDatas();
@@ -118,16 +118,16 @@ export default {
           callback: (action) => {
             this.$copyText(password)
               .then(() => {
-                this.$message.success({ message: "密码已复制到剪贴板" });
+                this.$message.success("密码已复制到剪贴板");
               })
               .catch(() => {
-                this.$message.error({ message: "密码复制失败" });
+                this.$message.error("密码复制失败");
               });
           },
         });
       } else {
         const res = await user_service.edit(model2.id, model2);
-        if (!res || res.code != 0) return;
+        if (res.code != 0) return;
 
         this.editShow = false;
         this.loadDatas();
@@ -138,7 +138,7 @@ export default {
 
     onClickReset(row) {
       if (row.id == this.userInfo.id) {
-        this.$message.error({ message: "不能操作自己" });
+        this.$message.error("不能操作自己");
         return;
       }
 
@@ -149,7 +149,7 @@ export default {
       })
         .then(async () => {
           const res = await user_service.reset(row.id);
-          if (!res || res.code != 0) return;
+          if (res.code != 0) return;
 
           const password = res.data;
           this.$alert("密码为 " + password, "重置用户密码成功", {
@@ -157,10 +157,10 @@ export default {
             callback: (action) => {
               this.$copyText(password)
                 .then(() => {
-                  this.$message.success({ message: "密码已复制到剪贴板" });
+                  this.$message.success("密码已复制到剪贴板");
                 })
                 .catch(() => {
-                  this.$message.error({ message: "密码复制失败" });
+                  this.$message.error("密码复制失败");
                 });
             },
           });
@@ -170,9 +170,7 @@ export default {
 
     onClickDelete(row) {
       if (row.id == this.userInfo.id) {
-        this.$message.error({
-          message: "不能操作自己",
-        });
+        this.$message.error("不能操作自己");
         return;
       }
 
@@ -183,14 +181,11 @@ export default {
       })
         .then(async () => {
           const res = await user_service.del(row.id);
-          if (!res || res.code != 0) return;
+          if (res.code != 0) return;
 
           this.loadDatas();
 
-          this.$message({
-            type: "success",
-            message: "用户删除成功",
-          });
+          this.$message.success("用户删除成功");
         })
         .catch(() => {});
     },
@@ -200,7 +195,7 @@ export default {
       const data = this.getDataById(id);
 
       const res = await user_service.lock(id);
-      if (!res || res.code != 0) {
+      if (res.code != 0) {
         data.locked = !data.locked;
       }
     },
@@ -215,7 +210,7 @@ export default {
 
     async loadDatas() {
       const res = await user_service.getAll(this.pageCurrent, this.pageSize);
-      if (!res || res.code != 0) return;
+      if (res.code != 0) return;
 
       this.count = res.data.count;
       this.datas = res.data.datas;

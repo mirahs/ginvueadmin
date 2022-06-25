@@ -80,7 +80,7 @@ export default {
         this.pageSize,
         params
       );
-      if (!res || res.code != 0) return;
+      if (res.code != 0) return;
 
       this.count = res.data.count;
       this.datas = res.data.datas;
@@ -88,7 +88,7 @@ export default {
 
     async onClickDelete(row) {
       const res = await logService.delLoginAdmUser(row.id);
-      if (!res || res.code != 0) return;
+      if (res.code != 0) return;
 
       this.loadDatas();
 

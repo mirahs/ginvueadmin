@@ -68,7 +68,7 @@ export default {
         if (res.code != 0) return;
 
         this.$message.success("密码更新成功");
-        
+
         this.model.password = "";
         this.model.repassword = "";
       });
