@@ -21,7 +21,7 @@ type LogAdmUserLogin struct {
 
 // TableName 设置表名, gorm 默认是复数形式
 func (user *LogAdmUserLogin) TableName() string {
-	return "dbl_log_adm_user_login"
+	return "log_adm_user_login"
 }
 
 

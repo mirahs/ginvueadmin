@@ -24,7 +24,7 @@ type AdmUser struct {
 
 // TableName 设置表名, gorm 默认是复数形式
 func (admUser *AdmUser) TableName() string {
-	return "dbl_adm_user"
+	return "adm_user"
 }
 
 
