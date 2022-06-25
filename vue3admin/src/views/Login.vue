@@ -20,12 +20,12 @@ import { useRouter } from 'vue-router'
 
 import type { FormInstance, FormRules } from 'element-plus'
 
-import createAuthStore from '@/sotre/auth'
+import useAuthStore from '@/sotre/auth'
 
 
 const router = useRouter()
 
-const authStore = createAuthStore()
+const authStore = useAuthStore()
 
 const formRef = ref<FormInstance>()
 

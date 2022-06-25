@@ -5,10 +5,6 @@
                 <el-col :xs="19" :sm="20" :md="21" :lg="21" :xl="22">
                     <el-menu :default-active="menuStore.activeHeader" mode="horizontal" background-color="#23262E"
                         text-color="#fff" active-text-color="#ffd04b" @select="handleHeaderSelect">
-                        <!-- <el-menu-item index="1">首页</el-menu-item>
-                        <el-menu-item index="2">系统</el-menu-item>
-                        <el-menu-item index="3">用户</el-menu-item>
-                        <el-menu-item index="4">博客</el-menu-item> -->
                         <el-menu-item v-for="menu in menuStore.menus" :key="menu.name" :index="menu.name">{{ menu.desc
                         }}</el-menu-item>
                     </el-menu>
@@ -40,26 +36,14 @@
         </el-header>
         <el-container>
             <el-aside width="200px">
-                <!-- <el-menu default-active="category" background-color="#393D49" text-color="#fff"
-                    active-text-color="#ffd04b" @select="handleAsideSelect">
-                    <el-menu-item index="tag">
-                        <span>标签</span>
-                    </el-menu-item>
-                    <el-menu-item index="category">
-                        <span>分类</span>
-                    </el-menu-item>
-
-                    <el-sub-menu index="article">
-                        <template #title>
-                            <span>文章</span>
-                        </template>
-                        <el-menu-item index="1-2">文章列表</el-menu-item>
-                    </el-sub-menu>
-
-                </el-menu> -->
                 <the-side-bar :menus="menuStore.menusAside" @select="handleAsideSelect"></the-side-bar>
             </el-aside>
             <el-main>
+                <el-breadcrumb class="main-head" :separator-icon="ArrowRight">
+                    <el-breadcrumb-item v-for="(item, index) in menuStore.breadcrumbs[$route.path]" :key="index">{{ item
+                    }}
+                    </el-breadcrumb-item>
+                </el-breadcrumb>
                 <router-view />
             </el-main>
         </el-container>
@@ -72,7 +56,7 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { Action, ElMessageBox } from 'element-plus'
-import { User as IconUser, CaretBottom as IconCaretBottom } from '@element-plus/icons-vue'
+import { User as IconUser, CaretBottom as IconCaretBottom, ArrowRight } from '@element-plus/icons-vue'
 
 import useAuthStore from '@/sotre/auth'
 import useMenuStore from '@/sotre/menu'
@@ -80,7 +64,6 @@ import useMenuStore from '@/sotre/menu'
 import TheSideBar from '@/components/TheSideBar.vue'
 
 
-const activeHeader = ref('1')
 const router = useRouter()
 
 const authStore = useAuthStore()
@@ -93,7 +76,7 @@ onMounted(() => {
 
 
 const handleHeaderSelect = (key: string, keyPath?: string[]) => {
-    console.log('handleHeaderSelect', key, keyPath)
+    // console.log('handleHeaderSelect', key, keyPath)
 
     if (keyPath != undefined && key == menuStore.activeHeader) return
 
@@ -103,7 +86,7 @@ const handleHeaderSelect = (key: string, keyPath?: string[]) => {
 }
 
 const handleAsideSelect = (key: string, keyPath: string[]) => {
-    console.log('handleAsideSelect', key, keyPath)
+    // console.log('handleAsideSelect', key, keyPath)
 
     menuStore.onAsideTap(key)
 }
@@ -141,12 +124,6 @@ const logout = () => {
 
 .el-main {
     padding: 0px;
-    /* background-color: green; */
-}
-
-.el-main>.container {
-    padding: 9px 15px 15px;
-    text-align: left;
 }
 
 .user-info {
@@ -166,5 +143,17 @@ const logout = () => {
     /* align-self: center; */
     /*如果你元素设置了aligh-items为center就不用设置了*/
     color: #ffffff;
+}
+
+.main-head {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    background-color: #eee;
+}
+
+.el-main>.container {
+    padding: 9px 15px 15px;
+    text-align: left;
 }
 </style>
