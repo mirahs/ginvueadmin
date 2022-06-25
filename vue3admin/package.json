@@ -14,9 +14,11 @@
   "dependencies": {
     "axios": "^0.19.2",
     "element-plus": "^2.2.6",
+    "moment": "^2.29.3",
     "pinia": "^2.0.14",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.2.25",
+    "vue-clipboard3": "^2.0.0",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
