@@ -63,6 +63,7 @@ const useAuthStore = defineStore('auth', {
             this._userInfo = null
 
             localStorage.removeItem('token')
+            sessionStorage.clear()
         }
     },
 })
